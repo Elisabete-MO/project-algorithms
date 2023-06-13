@@ -17,7 +17,7 @@ def mergesort(s):
 def merge(left, right):
     merged = []
     i = j = 0
-    
+
     while i < len(left) and j < len(right):
         if left[i] <= right[j]:
             merged.append(left[i])
@@ -25,7 +25,7 @@ def merge(left, right):
         else:
             merged.append(right[j])
             j += 1
-    
+
     merged.extend(left[i:])
     merged.extend(right[j:])
 
@@ -38,7 +38,7 @@ def is_anagram(first_string, second_string):
 
     first_string = mergesort(first_string)
     second_string = mergesort(second_string)
-    
+
     first_string = ''.join(first_string)
     second_string = ''.join(second_string)
 
