@@ -39,8 +39,8 @@ def is_anagram(first_string, second_string):
     return (first_string, second_string, first_string == second_string)
 
 # if __name__ == "__main__":
-#     word = 'dcba'
-#     print(is_anagram(word, 'abcd'))
-#     print(is_anagram(word, 'bacd'))
-#     print(is_anagram(word, 'not'))
-#     print(is_anagram('amor', 'arMo'))
+#     word = 'Roma'
+#     print(is_anagram(word, 'amor')) #TRUE
+#     print(is_anagram(word, 'roma')) #TRUE
+#     print(is_anagram(word, 'not')) #FALSE
+#     print(is_anagram(word, 'Amor')) #TRUE
