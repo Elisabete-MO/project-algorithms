@@ -1,32 +1,44 @@
-def quicksort(s, low, high):
-    if low < high:
-        pivot_index = partition(s, low, high)
-        quicksort(s, low, pivot_index - 1)
-        quicksort(s, pivot_index + 1, high)
-    return ''.join(s)
+def mergesort(s):
+    if len(s) <= 1:
+        return s
+
+    mid = len(s) // 2
+    left_half = s[:mid]
+    right_half = s[mid:]
+
+    left_half = mergesort(left_half)
+    right_half = mergesort(right_half)
+
+    sorted_lst = merge(left_half, right_half)
+
+    return sorted_lst
 
 
-def partition(s, low, high):
-    pivot = s[high]
-    i = low - 1
-
-    for j in range(low, high):
-        if s[j] <= pivot:
+def merge(left, right):
+    merged = []
+    i = j = 0
+    
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            merged.append(left[i])
             i += 1
-            s[i], s[j] = s[j], s[i]
+        else:
+            merged.append(right[j])
+            j += 1
+    
+    merged.extend(left[i:])
+    merged.extend(right[j:])
 
-    s[i + 1], s[high] = s[high], s[i + 1]
-    return i + 1
+    return merged
 
 
 def is_anagram(first_string, second_string):
-
     first_string = list(first_string.lower())
     second_string = list(second_string.lower())
 
-    quicksort(first_string, 0, len(first_string) - 1)
-    quicksort(second_string, 0, len(second_string) - 1)
-
+    first_string = mergesort(first_string)
+    second_string = mergesort(second_string)
+    
     first_string = ''.join(first_string)
     second_string = ''.join(second_string)
 
